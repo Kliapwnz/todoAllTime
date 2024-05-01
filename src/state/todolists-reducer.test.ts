@@ -1,6 +1,6 @@
-import { todolistsReducer } from './todolists-reducer'
-import { v1 } from 'uuid'
-import { TodolistType } from '../App'
+import {todolistsReducer} from './todolists-reducer'
+import {v1} from 'uuid'
+import {TodolistType} from '../App'
 
 test('correct todolist should be removed', () => {
    let todolistId1 = v1()
@@ -8,8 +8,8 @@ test('correct todolist should be removed', () => {
 
 
    const startState: TodolistType[] = [
-      { id: todolistId1, title: 'What to learn', filter: 'all' },
-      { id: todolistId2, title: 'What to buy', filter: 'all' },
+      {id: todolistId1, title: 'What to learn', filter: 'all'},
+      {id: todolistId2, title: 'What to buy', filter: 'all'},
    ]
 
 
