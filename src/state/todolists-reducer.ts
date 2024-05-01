@@ -67,5 +67,16 @@ export const todolistsReducer = (state: TodolistType[] = initialState, action: A
 }
 
 export const removeTodolistAC = (todolistId: string): RemoveTodolistActionType => {
-   return { type: 'REMOVE-TODOLIST', payload: { id: todolistId } } as const
+   return {type: 'REMOVE-TODOLIST', payload: {id: todolistId}} as const
+}
+export const addTodolistAC = (title: string): AddTodolistActionType => {
+   return {type: 'ADD-TODOLIST', payload: {title}} as const
+}
+export const changeTodolistTitleAC = (title: string, id: string): ChangeTodolistTitleActionType => {
+   return {
+      type: 'CHANGE-TODOLIST-TITLE', payload: {
+         id,
+         title
+      }
+   } as const
 }
