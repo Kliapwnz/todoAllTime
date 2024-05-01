@@ -18,7 +18,7 @@ test('correct todolist should be removed', () => {
       payload: {
          id: todolistId1,
       },
-   }
+   } as const
    const endState = todolistsReducer(startState, action)
 
 
@@ -41,7 +41,7 @@ test('correct todolist should be added', () => {
       payload: {
          title: 'New Todolist',
       },
-   }
+   } as const
    const endState = todolistsReducer(startState, action)
 
    expect(endState.length).toBe(3)
@@ -64,7 +64,7 @@ test('correct todolist should change its name', () => {
          id: todolistId2,
          title: 'New Todolist',
       },
-   }
+   } as const
    const endState = todolistsReducer(startState, action)
 
    expect(endState[0].title).toBe('What to learn')
@@ -85,7 +85,7 @@ test('correct filter of todolist should be changed', () => {
          id: todolistId2,
          filter: 'completed',
       },
-   }
+   } as const
    const endState = todolistsReducer(startState, action)
 
    expect(endState[0].filter).toBe('all')
