@@ -20,7 +20,8 @@ export const todolistsReducer = (state: TodolistType[] = initialState, action: A
          return state.filter(tl => tl.id !== action.payload.id)
       }
       case 'ADD-TODOLIST': {
-         return state
+         const newTodolist: TodolistType = {id: v1(), title: action.payload.title, filter: 'all'}
+         return [...state, newTodolist]
       }
       default:
          throw new Error("I don't understand this type")
