@@ -80,3 +80,11 @@ export const changeTodolistTitleAC = (title: string, id: string): ChangeTodolist
       }
    } as const
 }
+export const changeTodolistFilterAC = (filter: FilterValuesType, id: string): ChangeTodolistFilterActionType => {
+   return {
+      type: "CHANGE-TODOLIST-FILTER", payload: {
+         id,
+         filter
+      }
+   } as const
+}
