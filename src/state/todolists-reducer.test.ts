@@ -21,42 +21,32 @@ test('correct todolist should be removed', () => {
 test('correct todolist should be added', () => {
    let todolistId1 = v1()
    let todolistId2 = v1()
-
+   let newTodolistTitle = 'New Todolist'
    const startState: TodolistType[] = [
       {id: todolistId1, title: 'What to learn', filter: 'all'},
       {id: todolistId2, title: 'What to buy', filter: 'all'},
    ]
 
-   const action = {
-      type: 'ADD-TODOLIST',
-      payload: {
-         title: 'New Todolist',
-      },
-   }
-   const endState = todolistsReducer(startState, addTodolistAC('New Todolist'))
+
+   const endState = todolistsReducer(startState, addTodolistAC(newTodolistTitle))
 
    expect(endState.length).toBe(3)
-   expect(endState[2].title).toBe(action.payload.title)
+   expect(endState[2].title).toBe(newTodolistTitle)
 })
 test('correct todolist should change its name', () => {
    let todolistId1 = v1()
    let todolistId2 = v1()
 
+   let newTodolistTitle = 'New Todolist'
    const startState: TodolistType[] = [
       {id: todolistId1, title: 'What to learn', filter: 'all'},
       {id: todolistId2, title: 'What to buy', filter: 'all'},
    ]
 
-   const action = {
-      type: 'CHANGE-TODOLIST-TITLE',
-      payload: {
-         id: todolistId2,
-         title: 'New Todolist',
-      },
-   }
+
    const endState = todolistsReducer
-   (startState, changeTodolistTitleAC(todolistId2, "New Todolist"))
+   (startState, changeTodolistTitleAC(todolistId2, newTodolistTitle))
 
    expect(endState[0].title).toBe('What to learn')
-   expect(endState[1].title).toBe(action.payload.title)
+   expect(endState[1].title).toBe(newTodolistTitle)
 })
