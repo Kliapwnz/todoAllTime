@@ -6,7 +6,7 @@ import {
    todolistsReducer
 } from './todolists-reducer'
 import {v1} from 'uuid'
-import {TodolistType} from '../App'
+import {FilterValuesType, TodolistType} from '../App'
 
 test('correct todolist should be removed', () => {
    let todolistId1 = v1()
@@ -64,11 +64,11 @@ test('correct filter of todolist should be changed', () => {
       {id: todolistId1, title: 'What to learn', filter: 'all'},
       {id: todolistId2, title: 'What to buy', filter: 'all'},
    ]
+   let newFilter: FilterValuesType = "completed"
 
-
-   const endState = todolistsReducer(startState, changeTodolistFilterAC(todolistId2, 'completed'))
+   const endState = todolistsReducer(startState, changeTodolistFilterAC(todolistId2, newFilter))
 
 
    expect(endState[0].filter).toBe('all')
-   expect(endState[1].filter).toBe('completed')
+   expect(endState[1].filter).toBe(newFilter)
 })
