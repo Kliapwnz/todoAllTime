@@ -11,12 +11,7 @@ test('correct todolist should be removed', () => {
       { id: todolistId2, title: 'What to buy', filter: 'all' },
    ]
 
-   const action = {
-      type: 'REMOVE-TODOLIST',
-      payload: {
-         id: todolistId1,
-      },
-   }
+
 
    const endState = todolistsReducer(startState, removeTodolistAC(todolistId1))
 
