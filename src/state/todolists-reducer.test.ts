@@ -1,16 +1,15 @@
-import {addTodolistAC, removeTodolistAC, todolistsReducer} from './todolists-reducer'
-import { v1 } from 'uuid'
-import { TodolistType } from '../App'
+import {addTodolistAC, changeTodolistTitleAC, removeTodolistAC, todolistsReducer} from './todolists-reducer'
+import {v1} from 'uuid'
+import {TodolistType} from '../App'
 
 test('correct todolist should be removed', () => {
    let todolistId1 = v1()
    let todolistId2 = v1()
 
    const startState: TodolistType[] = [
-      { id: todolistId1, title: 'What to learn', filter: 'all' },
-      { id: todolistId2, title: 'What to buy', filter: 'all' },
+      {id: todolistId1, title: 'What to learn', filter: 'all'},
+      {id: todolistId2, title: 'What to buy', filter: 'all'},
    ]
-
 
 
    const endState = todolistsReducer(startState, removeTodolistAC(todolistId1))
@@ -24,8 +23,8 @@ test('correct todolist should be added', () => {
    let todolistId2 = v1()
 
    const startState: TodolistType[] = [
-      { id: todolistId1, title: 'What to learn', filter: 'all' },
-      { id: todolistId2, title: 'What to buy', filter: 'all' },
+      {id: todolistId1, title: 'What to learn', filter: 'all'},
+      {id: todolistId2, title: 'What to buy', filter: 'all'},
    ]
 
    const action = {
@@ -38,4 +37,26 @@ test('correct todolist should be added', () => {
 
    expect(endState.length).toBe(3)
    expect(endState[2].title).toBe(action.payload.title)
+})
+test('correct todolist should change its name', () => {
+   let todolistId1 = v1()
+   let todolistId2 = v1()
+
+   const startState: TodolistType[] = [
+      {id: todolistId1, title: 'What to learn', filter: 'all'},
+      {id: todolistId2, title: 'What to buy', filter: 'all'},
+   ]
+
+   const action = {
+      type: 'CHANGE-TODOLIST-TITLE',
+      payload: {
+         id: todolistId2,
+         title: 'New Todolist',
+      },
+   }
+   const endState = todolistsReducer
+   (startState, changeTodolistTitleAC(todolistId2, "New Todolist"))
+
+   expect(endState[0].title).toBe('What to learn')
+   expect(endState[1].title).toBe(action.payload.title)
 })
