@@ -86,7 +86,7 @@ function App() {
 	const changeTaskStatus = (taskId: string, taskStatus: boolean, todolistId: string) => {
 		const newTodolistTasks = {
 			...tasks,
-			[todolistId]: tasks[todolistId].map(t => t.id == taskId ? {...t, isDone: taskStatus} : t)
+			[todolistId]: tasks[todolistId].map(t => t.id === taskId ? {...t, isDone: taskStatus} : t)
 		}
 		setTasks(newTodolistTasks)
 	}
@@ -127,7 +127,7 @@ function App() {
 	}
 
 	const changeModeHandler = () => {
-		setThemeMode(themeMode == "light" ? "dark" : 'light')
+		setThemeMode(themeMode === "light" ? "dark" : 'light')
 	}
 
 	return (
