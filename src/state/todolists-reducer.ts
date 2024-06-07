@@ -26,7 +26,7 @@ type TodolistsReducerType =
    | AddTodolistACType
    | ChangeTodolistTitleACType
    | changeTodolistFilterACType
-type RemoveTodolistAcType = ReturnType<typeof removeTodolistAC>
+export type RemoveTodolistAcType = ReturnType<typeof removeTodolistAC>
 
 export const removeTodolistAC = (todolistId: string) => {
    return {
