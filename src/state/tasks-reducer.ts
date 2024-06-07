@@ -9,14 +9,18 @@ type removeTaskACType = ReturnType<typeof removeTaskAC>
 export const tasksReducer = (state: TasksStateType, action: TasksReducerType): TasksStateType => {
    switch (action.type) {
       case "REMOVE-TASK":
-         return state
+         return {
+            ...state,
+            [action.payload.todolistId]:
+               state[action.payload.todolistId].filter(el => el.id !== action.payload.taskId)
+         }
       default:
          return state
    }
 }
 
 
-export const removeTaskAC = (taskId:string ,todolistId: string) => {
+export const removeTaskAC = (taskId: string, todolistId: string) => {
    return {
       type: 'REMOVE-TASK',
       payload: {
