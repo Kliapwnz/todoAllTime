@@ -1,5 +1,4 @@
-import {FilterValuesType, TasksStateType, TodolistType} from "../App";
-import {v1} from "uuid";
+import {TasksStateType} from "../App";
 
 type TasksReducerType =
    removeTaskACType
